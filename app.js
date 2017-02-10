@@ -49,12 +49,15 @@ window.onload = function() {
   renderer.setCelestialBodies([sun, earth, moon, mars, phobos, deimos]);
 
   var hour = 0;
-  setInterval(function() {
+  const animate = function() {
     renderer.clearCanvas();
     renderer.setHour(hour);
     renderer.render();
     counter.innerText = parseInt(hour/24);
 
     hour += 1;
-  }, 5);
+    window.requestAnimationFrame(animate);
+  };
+
+  window.requestAnimationFrame(animate);
 };
