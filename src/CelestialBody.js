@@ -12,7 +12,7 @@ class CelestialBody {
     this.posX = 0;
   }
 
-  getDegree(hour) {
+  getRadians(hour) {
     return ((hour / this.hoursAroundCenter) * 360) * (Math.PI / 180);
   }
 
@@ -30,10 +30,12 @@ class CelestialBody {
 
     if (this.centerBody) {
       let [centerX, centerY] = this.centerBody.getPosition(hour);
-      posX = centerX + (Math.sin(this.getDegree(hour)) * this.distanceToCenter);
-      posY = centerY - (Math.cos(this.getDegree(hour)) * this.distanceToCenter);
+      posX = centerX + Math.floor((Math.sin(this.getRadians(hour)) * this.distanceToCenter));
+      posY = centerY - Math.floor((Math.cos(this.getRadians(hour)) * this.distanceToCenter));
     }
 
     return [posX, posY];
   }
 }
+
+module.exports = CelestialBody;

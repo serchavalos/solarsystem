@@ -7,6 +7,11 @@ const srcPath = projectPath + 'src/';
 fs.readdir(srcPath, (err, files) => {
   if (err) return;
 
-  let content = files.reduce((acc, file) => acc + fs.readFileSync(srcPath + file, 'utf-8'), '');
+  let content = files.reduce((acc, file) => {
+    let jsCode = fs.readFileSync(srcPath + file, 'utf-8');
+    jsCode = jsCode.replace(/module\.exports\s+=\s+\w+;/, '');
+
+    return acc + jsCode;
+  }, '');
   fs.writeFileSync(projectPath + 'bundle.js', content);
 })
