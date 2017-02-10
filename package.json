@@ -1,0 +1,23 @@
+{
+  "name": "solarsystem",
+  "version": "0.0.1",
+  "description": "Representation of celestial bodies with canvas",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node scripts/build.js; open index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/serchavalos/solarsystem.git"
+  },
+  "author": "Sergio Avalos <sergio.avalos@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/serchavalos/solarsystem/issues"
+  },
+  "homepage": "https://github.com/serchavalos/solarsystem#readme"
+}
