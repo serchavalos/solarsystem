@@ -1,20 +1,15 @@
 const assert = require('assert');
 const CelestialBody = require('../src/CelestialBody.js');
+const OrbitingBody = require('../src/OrbitingBody.js');
 
-describe('CelestialBody', () => {
+describe('OrbitingBody', () => {
 
   const sun = new CelestialBody({
     radius: 15,
     color: 'orange'
   });
 
-  const earth = new CelestialBody({
-    centerBody: sun,
-    distanceToCenter: 100,
-    radius: 9,
-    hoursAroundCenter: (365 * 24),
-    color: 'blue'
-  });
+  const earth = new OrbitingBody({radius: 9, color: 'blue'}, sun, (365 * 24), 100);
 
   describe('#getRadians', () => {
     it('return the right radian according to a given day (in hours)', () => {

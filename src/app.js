@@ -4,45 +4,11 @@ window.onload = function() {
     color: 'orange'
   });
 
-  const earth = new CelestialBody({
-    centerBody: sun,
-    distanceToCenter: 100,
-    radius: 9,
-    hoursAroundCenter: (365 * 24),
-    color: 'blue'
-  });
-
-  const moon = new CelestialBody({
-    centerBody: earth,
-    distanceToCenter: 20,
-    radius: 5,
-    hoursAroundCenter: 24,
-    color: 'gray'
-  });
-
-  const mars = new CelestialBody({
-    centerBody: sun,
-    distanceToCenter: 150,
-    radius: 10,
-    hoursAroundCenter: (687 * 24),
-    color: 'red'
-  });
-
-  const phobos = new CelestialBody({
-    centerBody: mars,
-    distanceToCenter: 14,
-    radius: 2,
-    hoursAroundCenter: 7,
-    color: 'gray'
-  });
-
-  const deimos = new CelestialBody({
-    centerBody: mars,
-    distanceToCenter: 24,
-    radius: 3,
-    hoursAroundCenter: 60,
-    color: 'gray'
-  });
+  const earth = new OrbitingBody({radius: 9, color: 'blue'}, sun, (365 * 24), 100);
+  const moon = new OrbitingBody({radius: 5, color: 'gray'}, earth, 24, 20);
+  const mars = new OrbitingBody({radius: 10, color: 'red'}, sun, (687 * 24), 150);
+  const phobos = new OrbitingBody({radius: 2, color: 'gray'}, mars, 7, 14);
+  const deimos = new OrbitingBody({radius: 3, color: 'gray'}, mars, 60, 24);
 
   const counter = document.getElementById("counter");
   const renderer = new Renderer(document.getElementById("canvas"));

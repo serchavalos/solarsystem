@@ -32,10 +32,10 @@ class Renderer {
 
   _renderCelestialBody(celestialBody) {
     let coordX, coordY;
-    if (celestialBody.hasCenter()) {
+    if (celestialBody instanceof OrbitingBody) {
       [coordX, coordY] = celestialBody.getPosition(this.hour);
     } else {
-      [coordX, coordY] = [this.canvas.width/2, this.canvas.height/2];
+      [coordX, coordY] = this._getCanvasCenterCoords();
       celestialBody.setPosition(coordX, coordY);
     }
 
@@ -43,5 +43,9 @@ class Renderer {
     this.ctx.arc(coordX, coordY, celestialBody.radius, 0,  2 * Math.PI, true);
     this.ctx.fillStyle = celestialBody.color;
     this.ctx.fill();
+  }
+
+  _getCanvasCenterCoords() {
+    return [this.canvas.width/2, this.canvas.height/2];
   }
 }

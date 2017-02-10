@@ -9,7 +9,11 @@ fs.readdir(srcPath, (err, files) => {
 
   let content = files.reduce((acc, file) => {
     let jsCode = fs.readFileSync(srcPath + file, 'utf-8');
-    jsCode = jsCode.replace(/module\.exports\s+=\s+\w+;/, '');
+    // Removes require and import
+    jsCode = jsCode
+      .replace(/module\.exports\s+=\s+\w+;/, '')
+      .replace(/const\s+\w+\s+=\s+require\([^\)]+\);/, '')
+    ;
 
     return acc + jsCode;
   }, '');
