@@ -1,4 +1,10 @@
+/**
+ * @class
+ */
 class CelestialBody {
+  /**
+   * @constructor
+   */
   constructor(props) {
     props = props || {};
 
@@ -9,12 +15,20 @@ class CelestialBody {
     this.posX = 0;
   }
 
+  /**
+   * @param {integer} posX
+   * @param {integer} posY
+   */
   setPosition(posX, posY) {
     this.posX = posX;
     this.posY = posY;
   }
 
-  getPosition(hour) {
+  /**
+   * Returns the coordinates around the orbit
+   * @return {array<int, int>} Current coordinates
+   */
+  getPosition() {
     return [this.posX, this.posY];
   }
 }
